@@ -63,7 +63,7 @@ class TestDownloadInvoice:
         self.homePage.open_cart()
         self.cartPage.proceed_checkout()
         assert self.cartPage.delivery_address() == self.cartPage.billing_address()
-        assert self.cartPage.assert_orderMenu()
+        self.cartPage.assert_orderMenu()
         self.cartPage.text_area()
         self.cartPage.click_placeOrder()
         assert self.cartPage.visible_payment()
@@ -75,7 +75,7 @@ class TestDownloadInvoice:
         self.cartPage.pay_and_confirmOrder()
         assert self.cartPage.visible_orderPlaced()
         self.cartPage.download_invoice()
-        time.sleep(2) # dosya indirmesini bekliyoruz.
+        time.sleep(2)
         assert self.cartPage.invoice_control()
         self.cartPage.continue_button()
         self.homePage.delete_account()
